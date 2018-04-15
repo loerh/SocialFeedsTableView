@@ -8,18 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+/**
+ The view controller handling and displaying social feeds.
+ */
+class SocialFeedsViewController: UIViewController {
+    
+    /// The social feed table view
+    @IBOutlet weak var socialFeedsTableView: SocialFeedTableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
