@@ -30,7 +30,7 @@ struct TwitterFeed: SocialFeed {
     }
     
     init(tweet: TWTRTweet) {
-        self.init(author: tweet.author.name, imageURL: tweet.author.profileImageURL)
+        self.init(author: "@\(tweet.author.screenName)", imageURL: tweet.author.profileImageLargeURL)
         self.tweetDescription = tweet.text
     }
 }

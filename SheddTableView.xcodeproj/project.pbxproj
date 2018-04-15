@@ -25,6 +25,7 @@
 		643EE7952083648300FE9887 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7922083648300FE9887 /* TwitterKit.framework */; };
 		643EE7962083648300FE9887 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7932083648300FE9887 /* TwitterCore.framework */; };
 		643EE79820836EFA00FE9887 /* SocialFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE79720836EFA00FE9887 /* SocialFeedViewModel.swift */; };
+		643EE79A2083C33A00FE9887 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE7992083C33A00FE9887 /* RoundedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		643EE7922083648300FE9887 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterKit.framework; path = Carthage/Build/iOS/TwitterKit.framework; sourceTree = "<group>"; };
 		643EE7932083648300FE9887 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = Carthage/Build/iOS/TwitterCore.framework; sourceTree = "<group>"; };
 		643EE79720836EFA00FE9887 /* SocialFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeedViewModel.swift; sourceTree = "<group>"; };
+		643EE7992083C33A00FE9887 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		641FFEAD2080C57800EBFBB1 /* SheddTableView */ = {
 			isa = PBXGroup;
 			children = (
+				643EE79B2083C3D800FE9887 /* ViewContoller */,
 				643EE7862083595700FE9887 /* API */,
 				641FFEC52080C65000EBFBB1 /* Views */,
 				641FFEC42080C64A00EBFBB1 /* ViewModel */,
@@ -124,6 +127,7 @@
 			children = (
 				643EE780208352A400FE9887 /* SocialFeedTableViewCell.swift */,
 				643EE7822083533D00FE9887 /* SocialFeedsTableView.swift */,
+				643EE7992083C33A00FE9887 /* RoundedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,6 +151,13 @@
 				643EE78D20835D1C00FE9887 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		643EE79B2083C3D800FE9887 /* ViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewContoller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				643EE79820836EFA00FE9887 /* SocialFeedViewModel.swift in Sources */,
 				641FFEAF2080C57800EBFBB1 /* AppDelegate.swift in Sources */,
 				641FFEB72080C57800EBFBB1 /* SheddTableView.xcdatamodeld in Sources */,
+				643EE79A2083C33A00FE9887 /* RoundedView.swift in Sources */,
 				643EE77F2083521200FE9887 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

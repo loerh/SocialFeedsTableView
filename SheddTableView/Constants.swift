@@ -18,6 +18,12 @@ struct Constants {
     
     /// The list of Instagram IDs
     static let instagramIDs = [""]
+    
+    /// The Twitter consumer key
+    static let twitterConsumerKey = "aVelmUV8hQUpkaXddREspxSOq"
+    
+    /// The Twitter consumer secret
+    static let twitterConsumerSecret = "3cShAxyPMD160JdPhhUG4qUiDL4497QcsIWVC8hMaSY6AjZrmC"
 }
 
 /// A type alias for the twitter completion
