@@ -56,6 +56,9 @@
 		641FFEAD2080C57800EBFBB1 /* SheddTableView */ = {
 			isa = PBXGroup;
 			children = (
+				641FFEC52080C65000EBFBB1 /* Views */,
+				641FFEC42080C64A00EBFBB1 /* ViewModel */,
+				641FFEC32080C64200EBFBB1 /* Model */,
 				641FFEAE2080C57800EBFBB1 /* AppDelegate.swift */,
 				641FFEB02080C57800EBFBB1 /* ViewController.swift */,
 				641FFEB22080C57800EBFBB1 /* Main.storyboard */,
@@ -65,6 +68,27 @@
 				641FFEB52080C57800EBFBB1 /* SheddTableView.xcdatamodeld */,
 			);
 			path = SheddTableView;
+			sourceTree = "<group>";
+		};
+		641FFEC32080C64200EBFBB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		641FFEC42080C64A00EBFBB1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		641FFEC52080C65000EBFBB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
