@@ -14,7 +14,7 @@ import Foundation
 struct Constants {
     
     /// The list of twitter IDs
-    static let twitterIDs = ["981097027391098880", "971689430229626880"]
+    static let twitterIDs = ["981097027391098880", "971689430229626880", "984862281312776192", "985289170573668352", "985254902464118785"]
     
     /// The list of Instagram IDs
     static let instagramIDs = [""]

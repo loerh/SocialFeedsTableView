@@ -26,6 +26,8 @@
 		643EE7962083648300FE9887 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7932083648300FE9887 /* TwitterCore.framework */; };
 		643EE79820836EFA00FE9887 /* SocialFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE79720836EFA00FE9887 /* SocialFeedViewModel.swift */; };
 		643EE79A2083C33A00FE9887 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE7992083C33A00FE9887 /* RoundedView.swift */; };
+		643EE79D2083C44400FE9887 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE79C2083C44400FE9887 /* DetailViewController.swift */; };
+		643EE79F2083CD3F00FE9887 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE79E2083CD3F00FE9887 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		643EE7932083648300FE9887 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = Carthage/Build/iOS/TwitterCore.framework; sourceTree = "<group>"; };
 		643EE79720836EFA00FE9887 /* SocialFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeedViewModel.swift; sourceTree = "<group>"; };
 		643EE7992083C33A00FE9887 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		643EE79C2083C44400FE9887 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		643EE79E2083CD3F00FE9887 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,19 +93,19 @@
 		641FFEAD2080C57800EBFBB1 /* SheddTableView */ = {
 			isa = PBXGroup;
 			children = (
-				643EE79B2083C3D800FE9887 /* ViewContoller */,
+				643EE79B2083C3D800FE9887 /* ViewContollers */,
 				643EE7862083595700FE9887 /* API */,
 				641FFEC52080C65000EBFBB1 /* Views */,
 				641FFEC42080C64A00EBFBB1 /* ViewModel */,
 				641FFEC32080C64200EBFBB1 /* Model */,
 				641FFEAE2080C57800EBFBB1 /* AppDelegate.swift */,
-				641FFEB02080C57800EBFBB1 /* SocialFeedsViewController.swift */,
 				641FFEB22080C57800EBFBB1 /* Main.storyboard */,
 				641FFEB82080C57800EBFBB1 /* Assets.xcassets */,
 				641FFEBA2080C57800EBFBB1 /* LaunchScreen.storyboard */,
 				641FFEBD2080C57800EBFBB1 /* Info.plist */,
 				641FFEB52080C57800EBFBB1 /* SheddTableView.xcdatamodeld */,
 				643EE77E2083521200FE9887 /* Constants.swift */,
+				643EE79E2083CD3F00FE9887 /* Extensions.swift */,
 			);
 			path = SheddTableView;
 			sourceTree = "<group>";
@@ -153,11 +157,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		643EE79B2083C3D800FE9887 /* ViewContoller */ = {
+		643EE79B2083C3D800FE9887 /* ViewContollers */ = {
 			isa = PBXGroup;
 			children = (
+				641FFEB02080C57800EBFBB1 /* SocialFeedsViewController.swift */,
+				643EE79C2083C44400FE9887 /* DetailViewController.swift */,
 			);
-			path = ViewContoller;
+			path = ViewContollers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,12 +262,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643EE79D2083C44400FE9887 /* DetailViewController.swift in Sources */,
 				643EE7882083596000FE9887 /* APIManager.swift in Sources */,
 				643EE7832083533D00FE9887 /* SocialFeedsTableView.swift in Sources */,
 				641FFEB12080C57800EBFBB1 /* SocialFeedsViewController.swift in Sources */,
 				643EE7852083577B00FE9887 /* SocialFeed.swift in Sources */,
 				643EE781208352A400FE9887 /* SocialFeedTableViewCell.swift in Sources */,
 				643EE79820836EFA00FE9887 /* SocialFeedViewModel.swift in Sources */,
+				643EE79F2083CD3F00FE9887 /* Extensions.swift in Sources */,
 				641FFEAF2080C57800EBFBB1 /* AppDelegate.swift in Sources */,
 				641FFEB72080C57800EBFBB1 /* SheddTableView.xcdatamodeld in Sources */,
 				643EE79A2083C33A00FE9887 /* RoundedView.swift in Sources */,

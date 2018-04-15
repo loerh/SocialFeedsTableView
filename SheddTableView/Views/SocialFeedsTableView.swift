@@ -72,5 +72,16 @@ extension SocialFeedsTableView: UITableViewDataSource {
 }
 
 extension SocialFeedsTableView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        deselectRow(at: indexPath, animated: true)
+        
+        guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailViewController.storyboardIdentifier) as? DetailViewController,
+            let feed = data?[indexPath.row] as? TwitterFeed else {
+            return
+        }
+
+        detailsVC.configure(with: feed)
+        UIApplication.topViewController()?.present(detailsVC, animated: true, completion: nil)
+    }
 }
