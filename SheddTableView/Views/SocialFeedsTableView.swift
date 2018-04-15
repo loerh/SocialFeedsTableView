@@ -38,7 +38,16 @@ extension SocialFeedsTableView: UITableViewDataSource {
     //MARK: Datasource Functions
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        fatalError("You must implement cellForRow:atIndexPath: in order for your table view to work properly")
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TwitterTableViewCell.identifier) as? TwitterTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        if let feed = data?[indexPath.row] as? TwitterFeed {
+            cell.configure(with: feed)
+        }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

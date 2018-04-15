@@ -6,25 +6,68 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Social Feeds View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SheddTableView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SocialFeedsViewController" customModule="SheddTableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b1k-rP-WZN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b1k-rP-WZN" customClass="SocialFeedsTableView" customModule="SheddTableView" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="0Iz-Hi-8Lo"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1at-Bn-7Oj"/>
-                                </connections>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TwitterTableViewCell" rowHeight="75" id="vT1-eP-Z1Y" customClass="TwitterTableViewCell" customModule="SheddTableView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vT1-eP-Z1Y" id="Nkw-cQ-v3S">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="llI-RY-Im0">
+                                                    <rect key="frame" x="15" y="11" width="53" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="53" id="Eex-gz-W6G"/>
+                                                        <constraint firstAttribute="width" constant="53" id="kPT-SU-3m3"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llw-WJ-n2Y">
+                                                    <rect key="frame" x="76" y="11" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tq-dF-NeG">
+                                                    <rect key="frame" x="76" y="33" width="37.5" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0tq-dF-NeG" firstAttribute="leading" secondItem="Llw-WJ-n2Y" secondAttribute="leading" id="Vqk-eW-cJo"/>
+                                                <constraint firstItem="0tq-dF-NeG" firstAttribute="top" secondItem="Llw-WJ-n2Y" secondAttribute="bottom" constant="4" id="bYh-IW-K4Y"/>
+                                                <constraint firstItem="Llw-WJ-n2Y" firstAttribute="leading" secondItem="llI-RY-Im0" secondAttribute="trailing" constant="8" id="cKp-yq-5eC"/>
+                                                <constraint firstItem="llI-RY-Im0" firstAttribute="centerY" secondItem="Nkw-cQ-v3S" secondAttribute="centerY" id="flU-WU-QBA"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Llw-WJ-n2Y" secondAttribute="trailing" constant="12" id="iov-Ci-9JL"/>
+                                                <constraint firstItem="llI-RY-Im0" firstAttribute="leading" secondItem="Nkw-cQ-v3S" secondAttribute="leadingMargin" id="mBG-Hy-r1T"/>
+                                                <constraint firstItem="Llw-WJ-n2Y" firstAttribute="top" secondItem="llI-RY-Im0" secondAttribute="top" id="ud9-68-oPz"/>
+                                                <constraint firstItem="0tq-dF-NeG" firstAttribute="trailing" secondItem="Llw-WJ-n2Y" secondAttribute="trailing" id="z5P-O7-rTI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="feedAuthorLabel" destination="Llw-WJ-n2Y" id="aaV-Za-xb2"/>
+                                            <outlet property="feedContentLabel" destination="0tq-dF-NeG" id="LjR-Kr-ck2"/>
+                                            <outlet property="feedImageView" destination="llI-RY-Im0" id="suO-JA-0M8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -36,6 +79,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="socialFeedsTableView" destination="b1k-rP-WZN" id="O1u-SH-vOg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

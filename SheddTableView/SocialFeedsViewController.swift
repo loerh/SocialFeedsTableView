@@ -14,11 +14,16 @@ import UIKit
 class SocialFeedsViewController: UIViewController {
     
     /// The social feed table view
-    @IBOutlet weak var socialFeedsTableView: SocialFeedTableView?
+    @IBOutlet weak var socialFeedsTableView: SocialFeedsTableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let viewModel = SocialFeedViewModel()
+        
+        viewModel.fetchTweets { (twitterFeeds) in
+            self.socialFeedsTableView?.setup(with: twitterFeeds)
+        }
     }
 
 }

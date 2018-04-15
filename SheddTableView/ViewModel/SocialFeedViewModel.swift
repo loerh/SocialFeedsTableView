@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+/**
+ The view model for Social Feed.
+ */
+class SocialFeedViewModel {
+    
+    /**
+     Fetches and persists twitter feeds.
+     */
+    func fetchTweets(completion: @escaping TwitterCompletion) {
+        
+        APIManager.shared.fetchTweets(completion: completion)
+    }
+}

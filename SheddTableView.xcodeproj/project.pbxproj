@@ -8,22 +8,46 @@
 
 /* Begin PBXBuildFile section */
 		641FFEAF2080C57800EBFBB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641FFEAE2080C57800EBFBB1 /* AppDelegate.swift */; };
-		641FFEB12080C57800EBFBB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641FFEB02080C57800EBFBB1 /* ViewController.swift */; };
+		641FFEB12080C57800EBFBB1 /* SocialFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641FFEB02080C57800EBFBB1 /* SocialFeedsViewController.swift */; };
 		641FFEB42080C57800EBFBB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641FFEB22080C57800EBFBB1 /* Main.storyboard */; };
 		641FFEB72080C57800EBFBB1 /* SheddTableView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 641FFEB52080C57800EBFBB1 /* SheddTableView.xcdatamodeld */; };
 		641FFEB92080C57800EBFBB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 641FFEB82080C57800EBFBB1 /* Assets.xcassets */; };
 		641FFEBC2080C57800EBFBB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641FFEBA2080C57800EBFBB1 /* LaunchScreen.storyboard */; };
+		643EE77F2083521200FE9887 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE77E2083521200FE9887 /* Constants.swift */; };
+		643EE781208352A400FE9887 /* SocialFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE780208352A400FE9887 /* SocialFeedTableViewCell.swift */; };
+		643EE7832083533D00FE9887 /* SocialFeedsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE7822083533D00FE9887 /* SocialFeedsTableView.swift */; };
+		643EE7852083577B00FE9887 /* SocialFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE7842083577B00FE9887 /* SocialFeed.swift */; };
+		643EE7882083596000FE9887 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE7872083596000FE9887 /* APIManager.swift */; };
+		643EE78E20835D1C00FE9887 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE78B20835D1C00FE9887 /* Alamofire.framework */; };
+		643EE78F20835D1C00FE9887 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE78C20835D1C00FE9887 /* SDWebImage.framework */; };
+		643EE79020835D1C00FE9887 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE78D20835D1C00FE9887 /* SwiftyJSON.framework */; };
+		643EE7942083648300FE9887 /* TwitterShareExtensionUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7912083648300FE9887 /* TwitterShareExtensionUI.framework */; };
+		643EE7952083648300FE9887 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7922083648300FE9887 /* TwitterKit.framework */; };
+		643EE7962083648300FE9887 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7932083648300FE9887 /* TwitterCore.framework */; };
+		643EE79820836EFA00FE9887 /* SocialFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE79720836EFA00FE9887 /* SocialFeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		641FFEAB2080C57800EBFBB1 /* SheddTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SheddTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		641FFEAE2080C57800EBFBB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		641FFEB02080C57800EBFBB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		641FFEB02080C57800EBFBB1 /* SocialFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeedsViewController.swift; sourceTree = "<group>"; };
 		641FFEB32080C57800EBFBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		641FFEB62080C57800EBFBB1 /* SheddTableView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SheddTableView.xcdatamodel; sourceTree = "<group>"; };
 		641FFEB82080C57800EBFBB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		641FFEBB2080C57800EBFBB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		641FFEBD2080C57800EBFBB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		643EE77E2083521200FE9887 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		643EE780208352A400FE9887 /* SocialFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeedTableViewCell.swift; sourceTree = "<group>"; };
+		643EE7822083533D00FE9887 /* SocialFeedsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeedsTableView.swift; sourceTree = "<group>"; };
+		643EE7842083577B00FE9887 /* SocialFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeed.swift; sourceTree = "<group>"; };
+		643EE7872083596000FE9887 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		643EE78B20835D1C00FE9887 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		643EE78C20835D1C00FE9887 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		643EE78D20835D1C00FE9887 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		643EE7912083648300FE9887 /* TwitterShareExtensionUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterShareExtensionUI.framework; path = Carthage/Build/iOS/TwitterShareExtensionUI.framework; sourceTree = "<group>"; };
+		643EE7922083648300FE9887 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterKit.framework; path = Carthage/Build/iOS/TwitterKit.framework; sourceTree = "<group>"; };
+		643EE7932083648300FE9887 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = Carthage/Build/iOS/TwitterCore.framework; sourceTree = "<group>"; };
+		643EE79720836EFA00FE9887 /* SocialFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +55,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643EE78E20835D1C00FE9887 /* Alamofire.framework in Frameworks */,
+				643EE78F20835D1C00FE9887 /* SDWebImage.framework in Frameworks */,
+				643EE79020835D1C00FE9887 /* SwiftyJSON.framework in Frameworks */,
+				643EE7942083648300FE9887 /* TwitterShareExtensionUI.framework in Frameworks */,
+				643EE7952083648300FE9887 /* TwitterKit.framework in Frameworks */,
+				643EE7962083648300FE9887 /* TwitterCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +72,7 @@
 			children = (
 				641FFEAD2080C57800EBFBB1 /* SheddTableView */,
 				641FFEAC2080C57800EBFBB1 /* Products */,
+				643EE78A20835D1C00FE9887 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,16 +87,18 @@
 		641FFEAD2080C57800EBFBB1 /* SheddTableView */ = {
 			isa = PBXGroup;
 			children = (
+				643EE7862083595700FE9887 /* API */,
 				641FFEC52080C65000EBFBB1 /* Views */,
 				641FFEC42080C64A00EBFBB1 /* ViewModel */,
 				641FFEC32080C64200EBFBB1 /* Model */,
 				641FFEAE2080C57800EBFBB1 /* AppDelegate.swift */,
-				641FFEB02080C57800EBFBB1 /* ViewController.swift */,
+				641FFEB02080C57800EBFBB1 /* SocialFeedsViewController.swift */,
 				641FFEB22080C57800EBFBB1 /* Main.storyboard */,
 				641FFEB82080C57800EBFBB1 /* Assets.xcassets */,
 				641FFEBA2080C57800EBFBB1 /* LaunchScreen.storyboard */,
 				641FFEBD2080C57800EBFBB1 /* Info.plist */,
 				641FFEB52080C57800EBFBB1 /* SheddTableView.xcdatamodeld */,
+				643EE77E2083521200FE9887 /* Constants.swift */,
 			);
 			path = SheddTableView;
 			sourceTree = "<group>";
@@ -73,6 +106,7 @@
 		641FFEC32080C64200EBFBB1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				643EE7842083577B00FE9887 /* SocialFeed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -80,6 +114,7 @@
 		641FFEC42080C64A00EBFBB1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				643EE79720836EFA00FE9887 /* SocialFeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -87,8 +122,31 @@
 		641FFEC52080C65000EBFBB1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				643EE780208352A400FE9887 /* SocialFeedTableViewCell.swift */,
+				643EE7822083533D00FE9887 /* SocialFeedsTableView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		643EE7862083595700FE9887 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				643EE7872083596000FE9887 /* APIManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		643EE78A20835D1C00FE9887 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				643EE7932083648300FE9887 /* TwitterCore.framework */,
+				643EE7922083648300FE9887 /* TwitterKit.framework */,
+				643EE7912083648300FE9887 /* TwitterShareExtensionUI.framework */,
+				643EE78B20835D1C00FE9887 /* Alamofire.framework */,
+				643EE78C20835D1C00FE9887 /* SDWebImage.framework */,
+				643EE78D20835D1C00FE9887 /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +159,7 @@
 				641FFEA72080C57800EBFBB1 /* Sources */,
 				641FFEA82080C57800EBFBB1 /* Frameworks */,
 				641FFEA92080C57800EBFBB1 /* Resources */,
+				643EE78920835C9200FE9887 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -158,14 +217,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		643EE78920835C9200FE9887 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TwitterCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TwitterKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TwitterShareExtensionUI.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		641FFEA72080C57800EBFBB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				641FFEB12080C57800EBFBB1 /* ViewController.swift in Sources */,
+				643EE7882083596000FE9887 /* APIManager.swift in Sources */,
+				643EE7832083533D00FE9887 /* SocialFeedsTableView.swift in Sources */,
+				641FFEB12080C57800EBFBB1 /* SocialFeedsViewController.swift in Sources */,
+				643EE7852083577B00FE9887 /* SocialFeed.swift in Sources */,
+				643EE781208352A400FE9887 /* SocialFeedTableViewCell.swift in Sources */,
+				643EE79820836EFA00FE9887 /* SocialFeedViewModel.swift in Sources */,
 				641FFEAF2080C57800EBFBB1 /* AppDelegate.swift in Sources */,
 				641FFEB72080C57800EBFBB1 /* SheddTableView.xcdatamodeld in Sources */,
+				643EE77F2083521200FE9887 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +392,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E7DGCG72AA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SheddTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentmeert.SheddTableView;
@@ -319,6 +411,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E7DGCG72AA;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SheddTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentmeert.SheddTableView;
