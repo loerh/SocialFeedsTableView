@@ -24,6 +24,12 @@ struct Constants {
     
     /// The Twitter consumer secret
     static let twitterConsumerSecret = "3cShAxyPMD160JdPhhUG4qUiDL4497QcsIWVC8hMaSY6AjZrmC"
+    
+    /// The Instagram client ID
+    static let instagramClientID = "a8abc5be53f14a76ad7a371b46ab2b6b"
+    
+    /// The Google SignIn client ID
+    static let googleSignInClientID = "637614579430-pe7kibfpn9f8l299h2b6vapqinuii7f5.apps.googleusercontent.com"
 }
 
 /// A type alias for the twitter completion

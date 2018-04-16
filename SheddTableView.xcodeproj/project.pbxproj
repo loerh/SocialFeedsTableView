@@ -28,6 +28,12 @@
 		643EE79A2083C33A00FE9887 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE7992083C33A00FE9887 /* RoundedView.swift */; };
 		643EE79D2083C44400FE9887 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE79C2083C44400FE9887 /* DetailViewController.swift */; };
 		643EE79F2083CD3F00FE9887 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE79E2083CD3F00FE9887 /* Extensions.swift */; };
+		643EE7A92084906300FE9887 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 643EE7A62084906200FE9887 /* GoogleSignIn.bundle */; };
+		643EE7AA2084906300FE9887 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7A72084906200FE9887 /* GoogleSignIn.framework */; };
+		643EE7AB2084906300FE9887 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7A82084906300FE9887 /* GoogleSignInDependencies.framework */; };
+		643EE7AD208490EC00FE9887 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7AC208490EC00FE9887 /* SafariServices.framework */; };
+		643EE7AF208490F200FE9887 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7AE208490F200FE9887 /* SystemConfiguration.framework */; };
+		643EE7B02084929E00FE9887 /* GoogleSignIn.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7A62084906200FE9887 /* GoogleSignIn.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +60,14 @@
 		643EE7992083C33A00FE9887 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		643EE79C2083C44400FE9887 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		643EE79E2083CD3F00FE9887 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		643EE7A02084904500FE9887 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = ../../../Downloads/google_signin_sdk_4_1_2/GoogleSignIn.bundle; sourceTree = "<group>"; };
+		643EE7A12084904500FE9887 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = ../../../Downloads/google_signin_sdk_4_1_2/GoogleSignIn.framework; sourceTree = "<group>"; };
+		643EE7A22084904500FE9887 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignInDependencies.framework; path = ../../../Downloads/google_signin_sdk_4_1_2/GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		643EE7A62084906200FE9887 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Frameworks/GoogleSignIn.bundle; sourceTree = "<group>"; };
+		643EE7A72084906200FE9887 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = Frameworks/GoogleSignIn.framework; sourceTree = "<group>"; };
+		643EE7A82084906300FE9887 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignInDependencies.framework; path = Frameworks/GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		643EE7AC208490EC00FE9887 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		643EE7AE208490F200FE9887 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +75,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643EE7B02084929E00FE9887 /* GoogleSignIn.bundle in Frameworks */,
+				643EE7AF208490F200FE9887 /* SystemConfiguration.framework in Frameworks */,
+				643EE7AD208490EC00FE9887 /* SafariServices.framework in Frameworks */,
+				643EE7AA2084906300FE9887 /* GoogleSignIn.framework in Frameworks */,
 				643EE78E20835D1C00FE9887 /* Alamofire.framework in Frameworks */,
+				643EE7AB2084906300FE9887 /* GoogleSignInDependencies.framework in Frameworks */,
 				643EE78F20835D1C00FE9887 /* SDWebImage.framework in Frameworks */,
 				643EE79020835D1C00FE9887 /* SwiftyJSON.framework in Frameworks */,
 				643EE7942083648300FE9887 /* TwitterShareExtensionUI.framework in Frameworks */,
@@ -147,12 +166,20 @@
 		643EE78A20835D1C00FE9887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				643EE7AE208490F200FE9887 /* SystemConfiguration.framework */,
+				643EE7AC208490EC00FE9887 /* SafariServices.framework */,
+				643EE7A02084904500FE9887 /* GoogleSignIn.bundle */,
+				643EE7A72084906200FE9887 /* GoogleSignIn.framework */,
+				643EE7A82084906300FE9887 /* GoogleSignInDependencies.framework */,
+				643EE7A12084904500FE9887 /* GoogleSignIn.framework */,
+				643EE7A22084904500FE9887 /* GoogleSignInDependencies.framework */,
 				643EE7932083648300FE9887 /* TwitterCore.framework */,
 				643EE7922083648300FE9887 /* TwitterKit.framework */,
 				643EE7912083648300FE9887 /* TwitterShareExtensionUI.framework */,
 				643EE78B20835D1C00FE9887 /* Alamofire.framework */,
 				643EE78C20835D1C00FE9887 /* SDWebImage.framework */,
 				643EE78D20835D1C00FE9887 /* SwiftyJSON.framework */,
+				643EE7A62084906200FE9887 /* GoogleSignIn.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -226,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				643EE7A92084906300FE9887 /* GoogleSignIn.bundle in Resources */,
 				641FFEBC2080C57800EBFBB1 /* LaunchScreen.storyboard in Resources */,
 				641FFEB92080C57800EBFBB1 /* Assets.xcassets in Resources */,
 				641FFEB42080C57800EBFBB1 /* Main.storyboard in Resources */,
@@ -415,9 +443,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = SheddTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentmeert.SheddTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -434,9 +468,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = SheddTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laurentmeert.SheddTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

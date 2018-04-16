@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 /**
  The view controller handling and displaying social feeds.
@@ -19,6 +20,9 @@ class SocialFeedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signInSilently()
+        
         let viewModel = SocialFeedViewModel()
         
         viewModel.fetchTweets { (twitterFeeds) in
@@ -26,5 +30,9 @@ class SocialFeedsViewController: UIViewController {
         }
     }
 
+}
+
+extension SocialFeedsViewController: GIDSignInUIDelegate {
+    
 }
 
