@@ -34,6 +34,7 @@
 		643EE7AD208490EC00FE9887 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7AC208490EC00FE9887 /* SafariServices.framework */; };
 		643EE7AF208490F200FE9887 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7AE208490F200FE9887 /* SystemConfiguration.framework */; };
 		643EE7B02084929E00FE9887 /* GoogleSignIn.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 643EE7A62084906200FE9887 /* GoogleSignIn.bundle */; };
+		643EE7B32084B2D800FE9887 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643EE7B22084B2D800FE9887 /* DBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		643EE7A82084906300FE9887 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignInDependencies.framework; path = Frameworks/GoogleSignInDependencies.framework; sourceTree = "<group>"; };
 		643EE7AC208490EC00FE9887 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		643EE7AE208490F200FE9887 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		643EE7B22084B2D800FE9887 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		641FFEAD2080C57800EBFBB1 /* SheddTableView */ = {
 			isa = PBXGroup;
 			children = (
+				643EE7B12084B2CA00FE9887 /* Database */,
 				643EE79B2083C3D800FE9887 /* ViewContollers */,
 				643EE7862083595700FE9887 /* API */,
 				641FFEC52080C65000EBFBB1 /* Views */,
@@ -191,6 +194,14 @@
 				643EE79C2083C44400FE9887 /* DetailViewController.swift */,
 			);
 			path = ViewContollers;
+			sourceTree = "<group>";
+		};
+		643EE7B12084B2CA00FE9887 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				643EE7B22084B2D800FE9887 /* DBManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +304,7 @@
 				643EE79D2083C44400FE9887 /* DetailViewController.swift in Sources */,
 				643EE7882083596000FE9887 /* APIManager.swift in Sources */,
 				643EE7832083533D00FE9887 /* SocialFeedsTableView.swift in Sources */,
+				643EE7B32084B2D800FE9887 /* DBManager.swift in Sources */,
 				641FFEB12080C57800EBFBB1 /* SocialFeedsViewController.swift in Sources */,
 				643EE7852083577B00FE9887 /* SocialFeed.swift in Sources */,
 				643EE781208352A400FE9887 /* SocialFeedTableViewCell.swift in Sources */,

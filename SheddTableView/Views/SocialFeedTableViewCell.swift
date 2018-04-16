@@ -13,7 +13,7 @@ import SDWebImage
 /**
  The table view cell that displays a social feed's metadata.
  */
-class SocialFeedTableViewCell: UITableViewCell, ConfigurableSocialCell {
+class SocialFeedTableViewCell: UITableViewCell {
     
     //MARK: Outlet Properties
     
@@ -30,9 +30,9 @@ class SocialFeedTableViewCell: UITableViewCell, ConfigurableSocialCell {
      Sets up the table view cell.
      - parameter data: The data object to use for filling the cell
      */
-    func configure(with data: SocialFeed) {
-        feedAuthorLabel?.text = data.author
-        feedImageView?.sd_setImage(with: URL(string: data.imageURL), placeholderImage: #imageLiteral(resourceName: "no_image"))
+    func configure(withFeed feed: SocialFeed) {
+        feedAuthorLabel?.text = feed.author
+        feedImageView?.sd_setImage(with: URL(string: feed.imageURL), placeholderImage: #imageLiteral(resourceName: "no_image"))
     }
     
 }
@@ -40,7 +40,7 @@ class SocialFeedTableViewCell: UITableViewCell, ConfigurableSocialCell {
 /**
  The Twitter table view cell
  */
-class TwitterTableViewCell: SocialFeedTableViewCell {
+class TwitterTableViewCell: SocialFeedTableViewCell, ConfigurableSocialCell {
     
     //MARK: Other Properties
     
@@ -51,14 +51,25 @@ class TwitterTableViewCell: SocialFeedTableViewCell {
      Sets up the table view cell.
      - parameter data: The data object to use for filling the cell
      */
-    override func configure(with data: SocialFeed) {
-        super.configure(with: data)
-        
-        guard let twitterFeed = data as? TwitterFeed else {
-            return
-        }
-        
+    func configure(with twitterFeed: TwitterFeed) {
+        configure(withFeed: twitterFeed)
         feedContentLabel?.text = twitterFeed.tweetDescription
+    }
+}
+
+class GoogleTableViewCell: SocialFeedTableViewCell, ConfigurableSocialCell {
+    
+    //MARK: Other Properties
+    
+    /// The cell identifier
+    static let identifier: String = "TwitterTableViewCell"
+    
+    //MARK: Protocol Config
+    
+    
+    func configure(with googleFeed: GooglePlusFeed) {
+        configure(withFeed: googleFeed)
+        
     }
 }
 
@@ -66,5 +77,6 @@ class TwitterTableViewCell: SocialFeedTableViewCell {
  A protocol of a Social Cell that can be reused.
  */
 protocol ConfigurableSocialCell {
-    func configure(with data: SocialFeed)
+    associatedtype SocialFeedData
+    func configure(with feed: SocialFeedData)
 }
