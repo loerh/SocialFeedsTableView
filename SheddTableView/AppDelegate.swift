@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialise Google SignIn
         GIDSignIn.sharedInstance().clientID = Constants.googleSignInClientID
-        GIDSignIn.sharedInstance().delegate = self
         
         return true
     }
@@ -82,14 +81,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-}
-
-extension AppDelegate: GIDSignInDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
-    }
-    
-    
 }
 

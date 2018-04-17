@@ -11,7 +11,7 @@ import TwitterCore
 import TwitterKit
 import SwiftyJSON
 import Alamofire
-
+import GoogleSignIn
 
 /**
  A manager for API calls.
@@ -48,5 +48,37 @@ class APIManager {
             
             completion(twitterFeeds)
         }
+    }
+    
+    /**
+     Fetches Google Plus activities for a user.
+     - parameter googlePlusUserID: The Google Plus User ID to use for fetching activities.
+     */
+    func fetchGooglePlusActivities(with googlePlusUserID: String, completion: @escaping GooglePlusCompletion) {
+        
+        /// Define url
+        let urlString = "https://www.googleapis.com/plus/v1/people/\(googlePlusUserID)/activities/public?key=\(Constants.googleAPIKey)"
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        /// Build task
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            
+            do {
+                let json = try JSON(data: data)
+                print(json)
+            } catch {
+                print(error)
+            }
+        }
+        
+        task.resume()
     }
 }

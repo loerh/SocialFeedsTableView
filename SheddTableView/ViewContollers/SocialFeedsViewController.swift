@@ -28,11 +28,12 @@ class SocialFeedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        GIDSignIn.sharedInstance().signOut()
         /// Assign search bar delegate
         searchBar?.delegate = self
         
-        
         /// Setup Google sign in
+        GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
         
@@ -59,6 +60,16 @@ class SocialFeedsViewController: UIViewController {
 }
 
 extension SocialFeedsViewController: GIDSignInUIDelegate {
+}
+
+extension SocialFeedsViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        APIManager.shared.fetchGoogleActivities { (googlePlusFeeds) in
+            
+        }
+    }
+    
     
 }
 
@@ -76,4 +87,6 @@ extension SocialFeedsViewController: UISearchBarDelegate {
         socialFeedsTableView?.filterData(withKeyword: searchText)
     }
 }
+
+
 
