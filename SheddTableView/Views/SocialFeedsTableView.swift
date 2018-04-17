@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import GoogleSignIn
 
 /**
  A custom and reusable table view that displays a list of cells.
@@ -84,9 +83,6 @@ extension SocialFeedsTableView: UITableViewDataSource {
         return cell
             
         case 1:
-            
-            if GIDSignIn.sharedInstance().currentUser != nil {
-            
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: GoogleTableViewCell.identifier) as? GoogleTableViewCell else {
                     return UITableViewCell()
                 }
@@ -96,13 +92,6 @@ extension SocialFeedsTableView: UITableViewDataSource {
                 }
                 
                 return cell
-            } else {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: GoogleSignInTableViewCell.identifier) as? GoogleSignInTableViewCell else {
-                    return UITableViewCell()
-                }
-                
-                return cell
-            }
         default:
             return UITableViewCell()
             
@@ -114,7 +103,7 @@ extension SocialFeedsTableView: UITableViewDataSource {
         case 0:
             return data?.flatMap({ $0 as? TwitterFeed }).count ?? 0
         case 1:
-            return GIDSignIn.sharedInstance().currentUser != nil ? data?.flatMap({ $0 as? GooglePlusFeed }).count ?? 0 : 1
+            return data?.flatMap({ $0 as? GooglePlusFeed }).count ?? 0
         default:
             return 0
         }
@@ -133,7 +122,7 @@ extension SocialFeedsTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 1 && GIDSignIn.sharedInstance().currentUser == nil ? 95 : 75
+        return indexPath.section == 0 ? 75 : 95
     }
 }
 

@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import TwitterKit
-import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,14 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialise Twitter
         TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.twitterConsumerKey, consumerSecret: Constants.twitterConsumerSecret)
         
-        // Initialise Google SignIn
-        GIDSignIn.sharedInstance().clientID = Constants.googleSignInClientID
-        
         return true
-    }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

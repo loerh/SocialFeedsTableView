@@ -10,8 +10,6 @@ import Foundation
 import TwitterCore
 import TwitterKit
 import SwiftyJSON
-import Alamofire
-import GoogleSignIn
 
 /**
  A manager for API calls.
@@ -73,7 +71,11 @@ class APIManager {
             
             do {
                 let json = try JSON(data: data)
-                print(json)
+                let items = json["items"].arrayValue
+                
+                for item in items {
+                    
+                }
             } catch {
                 print(error)
             }

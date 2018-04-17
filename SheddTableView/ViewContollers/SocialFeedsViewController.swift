@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleSignIn
 
 /**
  The view controller handling and displaying social feeds.
@@ -28,14 +27,8 @@ class SocialFeedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        GIDSignIn.sharedInstance().signOut()
         /// Assign search bar delegate
         searchBar?.delegate = self
-        
-        /// Setup Google sign in
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signInSilently()
         
         /// Fetch data
         socialFeedsTableView?.alpha = 0
@@ -57,20 +50,6 @@ class SocialFeedsViewController: UIViewController {
         }
     }
 
-}
-
-extension SocialFeedsViewController: GIDSignInUIDelegate {
-}
-
-extension SocialFeedsViewController: GIDSignInDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        APIManager.shared.fetchGoogleActivities { (googlePlusFeeds) in
-            
-        }
-    }
-    
-    
 }
 
 extension SocialFeedsViewController: UISearchBarDelegate {
