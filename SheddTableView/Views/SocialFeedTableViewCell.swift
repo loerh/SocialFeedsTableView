@@ -53,6 +53,7 @@ class TwitterTableViewCell: SocialFeedTableViewCell, ConfigurableSocialCell {
      */
     func configure(with twitterFeed: TwitterFeed) {
         configure(withFeed: twitterFeed)
+        feedAuthorLabel?.text = twitterFeed.tagUsername
         feedContentLabel?.text = twitterFeed.tweetDescription
     }
 }

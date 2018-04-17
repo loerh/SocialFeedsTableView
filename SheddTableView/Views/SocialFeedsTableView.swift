@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleSignIn
 
 /**
  A custom and reusable table view that displays a list of cells.
@@ -19,6 +20,8 @@ class SocialFeedsTableView: UITableView {
     /// The array of data to display in the table view
     private var data: [Any]?
     
+    private var initialData: [Any]?
+    
     //MARK: Setup
     
     /**
@@ -29,6 +32,34 @@ class SocialFeedsTableView: UITableView {
         self.delegate = self
         self.dataSource = self
         self.data = data
+        self.initialData = data
+        reloadData()
+    }
+    
+    func filterData(withKeyword keyword: String? = nil) {
+        
+        guard let keyword = keyword?.lowercased(),
+            !keyword.isEmpty else {
+            self.data = initialData
+            reloadData()
+            return
+        }
+        
+        let newData = self.initialData?.filter {
+            
+            if let twitterFeed = $0 as? TwitterFeed {
+                
+                return twitterFeed.author.lowercased().contains(keyword) || twitterFeed.feedID.contains(keyword) || twitterFeed.tweetDescription.lowercased().contains(keyword) || twitterFeed.tagUsername.lowercased().contains(keyword)
+            } else if let googleFeed = $0 as? GooglePlusFeed {
+                
+                return googleFeed.author.lowercased().contains(keyword) || googleFeed.feedID.contains(keyword)
+            }
+            
+            return false
+        }
+        
+        self.data = newData
+        
         reloadData()
     }
 }
@@ -39,6 +70,9 @@ extension SocialFeedsTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        switch indexPath.section {
+            
+        case 0:
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TwitterTableViewCell.identifier) as? TwitterTableViewCell else {
             return UITableViewCell()
         }
@@ -48,13 +82,41 @@ extension SocialFeedsTableView: UITableViewDataSource {
         }
         
         return cell
+            
+        case 1:
+            
+            if GIDSignIn.sharedInstance().currentUser != nil {
+            
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: GoogleTableViewCell.identifier) as? GoogleTableViewCell else {
+                    return UITableViewCell()
+                }
+                
+                if let googleFeed = data?[indexPath.row] as? GooglePlusFeed {
+                    cell.configure(with: googleFeed)
+                }
+                
+                return cell
+            } else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: GoogleSignInTableViewCell.identifier) as? GoogleSignInTableViewCell else {
+                    return UITableViewCell()
+                }
+                
+                return cell
+            }
+        default:
+            return UITableViewCell()
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return data?.flatMap({ $0 as? TwitterFeed }).count ?? 0
-        case 1: return 0
-        default: return 0
+        case 0:
+            return data?.flatMap({ $0 as? TwitterFeed }).count ?? 0
+        case 1:
+            return GIDSignIn.sharedInstance().currentUser != nil ? data?.flatMap({ $0 as? GooglePlusFeed }).count ?? 0 : 1
+        default:
+            return 0
         }
     }
     
@@ -65,9 +127,13 @@ extension SocialFeedsTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0: return "Twitter Feeds"
-        case 1: return "Instagram Feeds"
+        case 1: return "Google Plus Feeds"
         default: return nil
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 1 && GIDSignIn.sharedInstance().currentUser == nil ? 95 : 75
     }
 }
 

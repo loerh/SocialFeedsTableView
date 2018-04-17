@@ -18,6 +18,21 @@ class SocialFeedViewModel {
      */
     func fetchTweets(completion: @escaping TwitterCompletion) {
         
-        APIManager.shared.fetchTweets(completion: completion)
+        /// Show DB objects if we have some
+        if let dbTwitterFeeds = DBManager.shared.fetchTwitterFeeds() {
+            completion(dbTwitterFeeds)
+        }
+        
+        /// Fetch from API to update with fresh data
+        APIManager.shared.fetchTweets() { (twitterFeeds) in
+            for twitterFeed in twitterFeeds {
+                DBManager.shared.saveTwitterFeed(with: twitterFeed)
+            }
+            
+            /// Refetch from DB after updates
+            if let dbTwitterFeeds = DBManager.shared.fetchTwitterFeeds() {
+                completion(dbTwitterFeeds)
+            }
+        }
     }
 }

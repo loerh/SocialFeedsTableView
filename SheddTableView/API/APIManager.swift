@@ -9,6 +9,8 @@
 import Foundation
 import TwitterCore
 import TwitterKit
+import SwiftyJSON
+import Alamofire
 
 
 /**
@@ -47,5 +49,4 @@ class APIManager {
             completion(twitterFeeds)
         }
     }
-    
 }

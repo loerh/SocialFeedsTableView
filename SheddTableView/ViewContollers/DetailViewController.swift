@@ -64,10 +64,11 @@ class DetailViewController: UIViewController {
      */
     private func configureOutlets(with feed: SocialFeed) {
         feedAuthorImageView?.sd_setImage(with: URL(string: feed.imageURL), placeholderImage: #imageLiteral(resourceName: "no_image"))
-        feedAuthorUsernameLabel?.text = feed.author
+        feedAuthorLabel?.text = feed.author
         
         if let twitterFeed = feed as? TwitterFeed {
             feedAuthorDescription?.text = twitterFeed.tweetDescription
+            feedAuthorUsernameLabel?.text = twitterFeed.tagUsername
         }
     }
     

@@ -28,6 +28,37 @@ class DBManager {
         return appDelegate.persistentContainer.viewContext
     }
     
+    //MARK: Reusable Fetch
+    
+    /**
+     Fetches from CoreData using an entity name and a predicate if needed.
+     - parameter entity: The entity to fetch.
+     - parameter predicate: A predicate to filter search results. Defaults to nil.
+     - returns: The list of NSManagedObject results.
+     */
+    private func fetch(forEntity entity: DBEntity, predicate: NSPredicate? = nil) -> [NSManagedObject]? {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue)
+        
+        if let predicate = predicate {
+            fetchRequest.predicate = predicate
+        }
+        
+        do {
+            guard let fetchResults = try managedObjectContext?.fetch(fetchRequest) as? [NSManagedObject] else {
+                return nil
+            }
+            
+            return fetchResults
+            
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    //MARK: Twitter
+    
     /**
      Saves a twitter feed object to CoreData.
      - parameter twitterFeed: The TwitterFeed object to save.
@@ -36,14 +67,16 @@ class DBManager {
         
         /// Make sure we have the managed context
         guard let managedContext = managedObjectContext,
-            let twitterFeedEntity = NSEntityDescription.entity(forEntityName: TwitterFeedDBKey.entityName.rawValue, in: managedContext) else {
+            let twitterFeedEntity = NSEntityDescription.entity(forEntityName: DBEntity.twitter.rawValue, in: managedContext) else {
                 return
         }
         
         /// Check if object already exists
         let predicate = NSPredicate(format: "\(TwitterFeedDBKey.tweetID.rawValue) == %@", twitterFeed.feedID)
+        
         let twitterFeedMO: NSManagedObject
-        if let existingObject = fetchTwitterFeeds(predicate: predicate)?.first {
+        
+        if let existingObject = fetch(forEntity: .twitter, predicate: predicate)?.first {
             /// We have already this object store, update it
             twitterFeedMO = existingObject
         } else {
@@ -56,6 +89,7 @@ class DBManager {
         twitterFeedMO.setValue(twitterFeed.author, forKey: TwitterFeedDBKey.author.rawValue)
         twitterFeedMO.setValue(twitterFeed.imageURL, forKey: TwitterFeedDBKey.imageURL.rawValue)
         twitterFeedMO.setValue(twitterFeed.tweetDescription, forKey: TwitterFeedDBKey.tweetDescription.rawValue)
+        twitterFeedMO.setValue(twitterFeed.tagUsername, forKey: TwitterFeedDBKey.tagUsername.rawValue)
         
         /// Save managed object
         do {
@@ -65,30 +99,24 @@ class DBManager {
         }
     }
     
-    func fetchTwitterFeeds(predicate: NSPredicate? = nil) -> [TwitterFeed]? {
+    /**
+     Fetches Twitter feeds from CoreData.
+     - returns: The converted list of TwitterFeed objects.
+     */
+    func fetchTwitterFeeds() -> [TwitterFeed]? {
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: TwitterFeedDBKey.entityName.rawValue)
-        if let predicate = predicate {
-            fetchRequest.predicate = predicate
-        }
-        
-        do {
-            guard let fetchResults = try managedObjectContext?.fetch(fetchRequest) as? [NSManagedObject] else {
-                return nil
-            }
-            
-            var twitterFeeds = [TwitterFeed]()
-            for object in fetchResults {
-                if let twitterFeed = TwitterFeed(managedObject: object) {
-                    twitterFeeds.append(twitterFeed)
-                }
-            }
-            
-            return twitterFeeds
-            
-        } catch {
-            print(error)
+        guard let twitterFetchResults = fetch(forEntity: .twitter) else {
             return nil
         }
+        var twitterFeeds = [TwitterFeed]()
+        for object in twitterFetchResults {
+            if let twitterFeed = TwitterFeed(managedObject: object) {
+                twitterFeeds.append(twitterFeed)
+            }
+        }
+        
+        return twitterFeeds
     }
+    
+    
 }

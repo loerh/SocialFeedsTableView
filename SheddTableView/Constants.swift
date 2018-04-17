@@ -32,5 +32,17 @@ struct Constants {
     static let googleSignInClientID = "637614579430-pe7kibfpn9f8l299h2b6vapqinuii7f5.apps.googleusercontent.com"
 }
 
+/**
+ The list of Core Data entity names
+ */
+enum DBEntity: String {
+    
+    /// Twitter entity name
+    case twitter = "TwitterFeedMO"
+    
+    /// Google Plus entity name
+    case googlePlus = "GooglePlusFeedMO"
+}
+
 /// A type alias for the twitter completion
 typealias TwitterCompletion = ([TwitterFeed]) -> Void
