@@ -31,6 +31,9 @@ class DetailViewController: UIViewController {
     /// The image view for the feed, if any
     @IBOutlet weak var feedContentImageView: UIImageView?
     
+    /// The height constraint for feed content image view
+    @IBOutlet weak var feedContentImageHeightConstraint: NSLayoutConstraint?
+    
     //MARK: Other Properties
     
     /// The feed object
@@ -44,6 +47,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        feedContentImageView?.isHidden = true
         if let feed = feed {
             configureOutlets(with: feed)
         }
@@ -63,12 +67,19 @@ class DetailViewController: UIViewController {
      - parameter feed: The SocialFeed generic object to configure the outlets.
      */
     private func configureOutlets(with feed: SocialFeed) {
-        feedAuthorImageView?.sd_setImage(with: URL(string: feed.imageURL), placeholderImage: #imageLiteral(resourceName: "no_image"))
-        feedAuthorLabel?.text = feed.author
+        feedAuthorDescription?.text = feed.contentText
         
         if let twitterFeed = feed as? TwitterFeed {
-            feedAuthorDescription?.text = twitterFeed.tweetDescription
-            feedAuthorUsernameLabel?.text = twitterFeed.tagUsername
+            feedAuthorImageView?.sd_setImage(with: URL(string: twitterFeed.author.imageURL), placeholderImage: #imageLiteral(resourceName: "no_image"))
+            feedAuthorLabel?.text = twitterFeed.author.name
+            feedAuthorUsernameLabel?.text = twitterFeed.author.tagUserName
+            feedContentImageHeightConstraint?.constant = 0
+        } else if let googlePlusFeed = feed as? GooglePlusFeed {
+            feedAuthorImageView?.sd_setImage(with: URL(string: googlePlusFeed.author.imageURL), placeholderImage: #imageLiteral(resourceName: "no_image"))
+            feedAuthorLabel?.text = googlePlusFeed.author.name
+            feedAuthorUsernameLabel?.text = googlePlusFeed.feedTitle
+            feedContentImageView?.sd_setImage(with: URL(string: googlePlusFeed.attachmentImageURL), placeholderImage: #imageLiteral(resourceName: "no_image"))
+            feedContentImageView?.isHidden = false
         }
     }
     

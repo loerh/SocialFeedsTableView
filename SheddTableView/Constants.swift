@@ -34,11 +34,17 @@ struct Constants {
  */
 enum DBEntity: String {
     
-    /// Twitter entity name
-    case twitter = "TwitterFeedMO"
+    /// Twitter feed entity name
+    case twitterFeed = "TwitterFeedMO"
     
-    /// Google Plus entity name
-    case googlePlus = "GooglePlusFeedMO"
+    /// Twitter author entity name
+    case twitterAuthor = "TwitterAuthorMO"
+    
+    /// Google Plus feed entity name
+    case googlePlusFeed = "GooglePlusFeedMO"
+    
+    /// Google Plus author entity name
+    case googlePlusAuthor = "GooglePlusAuthorMO"
 }
 
 /// A type alias for the Twitter completion

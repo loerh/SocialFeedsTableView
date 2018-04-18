@@ -18,8 +18,5 @@ protocol SocialFeed {
     var feedID: String { get set }
     
     /// The feed author
-    var author: String { get set }
-    
-    /// The feed image URL
-    var imageURL: String { get set }
+    var contentText: String { get set }
 }

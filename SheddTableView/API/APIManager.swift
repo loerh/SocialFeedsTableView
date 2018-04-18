@@ -44,7 +44,9 @@ class APIManager {
                 twitterFeeds.append(twitterFeed)
             }
             
-            completion(twitterFeeds)
+            DispatchQueue.main.async {
+                completion(twitterFeeds)
+            }
         }
     }
     
@@ -73,8 +75,16 @@ class APIManager {
                 let json = try JSON(data: data)
                 let items = json["items"].arrayValue
                 
+                var googlePlusFeeds = [GooglePlusFeed]()
+                
                 for item in items {
-                    
+                    if let googlePlusFeed = GooglePlusFeed.parseJSON(with: item) {
+                        googlePlusFeeds.append(googlePlusFeed)
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    completion(googlePlusFeeds)
                 }
             } catch {
                 print(error)

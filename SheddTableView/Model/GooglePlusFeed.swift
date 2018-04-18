@@ -15,27 +15,68 @@ import SwiftyJSON
  */
 struct GooglePlusFeed: SocialFeed {
     
-    /// Twitter ID
+    /// Google Plus feed ID
     var feedID: String
     
-    /// Twitter author
-    var author: String
+    /// The feed content text
+    var contentText: String
     
-    /// Twitter image URL
-    var imageURL: String
+    /// The feed title
+    let feedTitle: String
     
+    /// The image URL for the content
     let attachmentImageURL: String
     
-    let attachmentContent: String
+    /// The author for this feed
+    let author: GooglePlusAuthor
     
-    init(feedID: String, author: String, imageURL: String, attachmentImageURL: String, attachmentContent: String) {
+    /**
+     A basic initialiser.
+     */
+    init(feedID: String, contentText: String, feedTitle: String, attachmentImageURL: String, author: GooglePlusAuthor) {
         self.feedID = feedID
-        self.author = author
-        self.imageURL = imageURL
+        self.contentText = contentText
+        self.feedTitle = feedTitle
         self.attachmentImageURL = attachmentImageURL
-        self.attachmentContent = attachmentContent
+        self.author = author
     }
     
+    /**
+     Initialises object using a managed object
+     */
+    init?(managedObject: NSManagedObject) {
+        
+        /// Find the feed fields
+        guard let feedID = managedObject.value(forKey: GooglePlusFeedDBKey.feedID.rawValue) as? String,
+            let contentText = managedObject.value(forKey: GooglePlusFeedDBKey.contentText.rawValue) as? String,
+            let attachmentImageURL = managedObject.value(forKey: GooglePlusFeedDBKey.attachmentImageURL.rawValue) as? String,
+            let title = managedObject.value(forKey: GooglePlusFeedDBKey.title.rawValue) as? String else {
+                return nil
+        }
+        
+        /// Get the author relationship
+        guard let author = managedObject.value(forKey: GooglePlusFeedDBKey.author.rawValue) as? NSManagedObject else {
+            return nil
+        }
+        
+        /// Find the author fields
+        guard let authorID = author.value(forKey: GooglePlusAuthorDBKey.authorID.rawValue) as? String,
+            let authorName = author.value(forKey: GooglePlusAuthorDBKey.name.rawValue) as? String,
+            let authorImageURL = author.value(forKey: GooglePlusAuthorDBKey.imageURL.rawValue) as? String else {
+                return nil
+        }
+        
+        /// Initialise
+        let googlePlusAuthor = GooglePlusAuthor(id: authorID, name: authorName, imageURL: authorImageURL)
+        
+        self.init(feedID: feedID, contentText: contentText, feedTitle: title, attachmentImageURL: attachmentImageURL, author: googlePlusAuthor)
+    }
+    
+    /**
+     Parses JSON object to create a new GooglePlusFeed object.
+     - parameter json: The JSON object to parse using SwiftyJSON.
+     - returns: The converted GooglePlusFeed object.
+     */
     static func parseJSON(with json: JSON) -> GooglePlusFeed? {
         
         guard let id = json["id"].string else {
@@ -46,11 +87,11 @@ struct GooglePlusFeed: SocialFeed {
             return nil
         }
         
-        guard let attachmentContent = json["attachments"].arrayValue.first?["content"].string else {
+        guard let attachmentContent = json["object"]["attachments"].arrayValue.first?["content"].string else {
             return nil
         }
         
-        guard let attachmentImageURL = json["attachments"].arrayValue.first?["image"]["url"].string else {
+        guard let attachmentImageURL = json["object"]["attachments"].arrayValue.first?["image"]["url"].string else {
             return nil
         }
         
@@ -70,7 +111,30 @@ struct GooglePlusFeed: SocialFeed {
             return nil
         }
         
-        return GooglePlusFeed(feedID: id, author: actorDisplayName, imageURL: actorImageURL, attachmentImageURL: attachmentImageURL, attachmentContent: attachmentContent)
+        let author = GooglePlusAuthor(id: actorID, name: actorDisplayName, imageURL: actorImageURL)
+        
+        return GooglePlusFeed(feedID: id, contentText: attachmentContent, feedTitle: title, attachmentImageURL: attachmentImageURL, author: author)
     }
     
+}
+
+/**
+ This enum contains the type safe keys needed to communicate with CoreData regarding GooglePlusFeed objects.
+ */
+enum GooglePlusFeedDBKey: String {
+    
+    /// The author relationship key
+    case author
+
+    /// The feed ID key
+    case feedID
+    
+    /// The content text key
+    case contentText
+    
+    /// The feed title key
+    case title
+    
+    /// The attachment image URL key
+    case attachmentImageURL
 }

@@ -17,27 +17,19 @@ struct TwitterFeed: SocialFeed {
     /// Twitter ID
     var feedID: String
     
-    /// Twitter author
-    var author: String
-    
-    /// Twitter image URL
-    var imageURL: String
-    
     /// Twitter tweet description
-    var tweetDescription: String
+    var contentText: String
     
-    /// The "@" tagged Twitter username
-    var tagUsername: String
+    /// The author for this feed
+    let author: TwitterAuthor
     
     /**
      A basic initialiser.
      */
-    init(feedID: String, author: String, imageURL: String) {
+    init(feedID: String, contentText: String, author: TwitterAuthor) {
         self.feedID = feedID
+        self.contentText = contentText
         self.author = author
-        self.imageURL = imageURL
-        self.tweetDescription = ""
-        self.tagUsername = ""
     }
     
     /**
@@ -45,10 +37,10 @@ struct TwitterFeed: SocialFeed {
      - parameter tweet: The TWTRTweet object.
      */
     init(tweet: TWTRTweet) {
-        self.init(feedID: tweet.tweetID, author: tweet.author.name, imageURL: tweet.author.profileImageLargeURL)
-        self.tweetDescription = tweet.text
-        self.tagUsername = "@\(tweet.author.screenName)"
         
+        let author = TwitterAuthor(id: tweet.author.userID, name: tweet.author.name, imageURL: tweet.author.profileImageLargeURL, tagUserName: "@\(tweet.author.screenName)")
+        
+        self.init(feedID: tweet.tweetID, contentText: tweet.text, author: author)
     }
     
     /**
@@ -56,22 +48,34 @@ struct TwitterFeed: SocialFeed {
      */
     init?(managedObject: NSManagedObject) {
         
+        /// Find the feed fields
         guard let feedID = managedObject.value(forKey: TwitterFeedDBKey.tweetID.rawValue) as? String,
-            let author = managedObject.value(forKey: TwitterFeedDBKey.author.rawValue) as? String,
-            let imageURL = managedObject.value(forKey: TwitterFeedDBKey.imageURL.rawValue) as? String,
-            let tweetDescription = managedObject.value(forKey: TwitterFeedDBKey.tweetDescription.rawValue) as? String,
-            let tagUsername = managedObject.value(forKey: TwitterFeedDBKey.tagUsername.rawValue) as? String else {
+            let contentText = managedObject.value(forKey: TwitterFeedDBKey.contentText.rawValue) as? String else {
                 return nil
         }
         
-        self.init(feedID: feedID, author: author, imageURL: imageURL)
-        self.tweetDescription = tweetDescription
-        self.tagUsername = tagUsername
+        /// Get the author relationship
+        guard let author = managedObject.value(forKey: TwitterFeedDBKey.author.rawValue) as? NSManagedObject else {
+            return nil
+        }
+        
+        /// Find the author fields
+        guard let authorID = author.value(forKey: TwitterAuthorDBKey.authorID.rawValue) as? String,
+        let authorName = author.value(forKey: TwitterAuthorDBKey.name.rawValue) as? String,
+        let authorImageURL = author.value(forKey: TwitterAuthorDBKey.imageURL.rawValue) as? String,
+        let authorTagUserName = author.value(forKey: TwitterAuthorDBKey.tagUserName.rawValue) as? String else {
+            return nil
+        }
+        
+        /// Initialise
+        let twitterAuthor = TwitterAuthor(id: authorID, name: authorName, imageURL: authorImageURL, tagUserName: authorTagUserName)
+        
+        self.init(feedID: feedID, contentText: contentText, author: twitterAuthor)
     }
 }
 
 /**
- This enum contains the type safe keys needed to communicate with CoreData
+ This enum contains the type safe keys needed to communicate with CoreData regarding TwitterFeed objects.
  */
 enum TwitterFeedDBKey: String {
     
@@ -81,12 +85,6 @@ enum TwitterFeedDBKey: String {
     /// Author
     case author
     
-    /// Image URL
-    case imageURL
-    
     /// Tweet description
-    case tweetDescription
-    
-    /// Twitter "@" tagged username
-    case tagUsername
+    case contentText
 }

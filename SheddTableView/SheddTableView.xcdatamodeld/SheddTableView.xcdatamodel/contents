@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1212" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="TwitterFeedMO" representedClassName="TwitterFeedMO" syncable="YES" codeGenerationType="class">
-        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="GooglePlusAuthorMO" representedClassName="GooglePlusAuthorMO" syncable="YES" codeGenerationType="class">
+        <attribute name="authorID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tagUsername" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tweetDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="googleFeeds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GooglePlusFeedMO" inverseName="author" inverseEntity="GooglePlusFeedMO" syncable="YES"/>
+    </entity>
+    <entity name="GooglePlusFeedMO" representedClassName="GooglePlusFeedMO" syncable="YES" codeGenerationType="class">
+        <attribute name="attachmentImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contentText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feedID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GooglePlusAuthorMO" inverseName="googleFeeds" inverseEntity="GooglePlusAuthorMO" syncable="YES"/>
+    </entity>
+    <entity name="TwitterAuthorMO" representedClassName="TwitterAuthorMO" syncable="YES" codeGenerationType="class">
+        <attribute name="authorID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagUserName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="twitterFeeds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterFeedMO" inverseName="author" inverseEntity="TwitterFeedMO" syncable="YES"/>
+    </entity>
+    <entity name="TwitterFeedMO" representedClassName="TwitterFeedMO" syncable="YES" codeGenerationType="class">
+        <attribute name="contentText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tweetID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterAuthorMO" inverseName="twitterFeeds" inverseEntity="TwitterAuthorMO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TwitterFeedMO" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="TwitterAuthorMO" positionX="-63" positionY="18" width="128" height="120"/>
+        <element name="TwitterFeedMO" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="GooglePlusFeedMO" positionX="-45" positionY="54" width="128" height="120"/>
+        <element name="GooglePlusAuthorMO" positionX="-36" positionY="63" width="128" height="105"/>
     </elements>
 </model>

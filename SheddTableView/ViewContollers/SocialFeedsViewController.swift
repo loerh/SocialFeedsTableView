@@ -34,10 +34,10 @@ class SocialFeedsViewController: UIViewController {
         socialFeedsTableView?.alpha = 0
         let viewModel = SocialFeedViewModel()
         
-        viewModel.fetchTweets { (twitterFeeds) in
+        viewModel.fetch { (socialFeeds) in
             
             /// Setup tableview
-            self.socialFeedsTableView?.setup(with: twitterFeeds)
+            self.socialFeedsTableView?.setup(with: socialFeeds)
             
             UIView.animate(withDuration: 0.5, animations: {
                 self.socialFeedsTableView?.alpha = 1

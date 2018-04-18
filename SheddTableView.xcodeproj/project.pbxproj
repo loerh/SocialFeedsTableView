@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6408FDB7208511A00016C227 /* TwitterFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408FDB6208511A00016C227 /* TwitterFeed.swift */; };
 		6408FDB9208512130016C227 /* GooglePlusFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408FDB8208512130016C227 /* GooglePlusFeed.swift */; };
-		6408FDBD208600740016C227 /* GoogleSignInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408FDBC208600740016C227 /* GoogleSignInTableViewCell.swift */; };
+		6408FDC520872A150016C227 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6408FDC420872A150016C227 /* Author.swift */; };
 		641FFEAF2080C57800EBFBB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641FFEAE2080C57800EBFBB1 /* AppDelegate.swift */; };
 		641FFEB12080C57800EBFBB1 /* SocialFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641FFEB02080C57800EBFBB1 /* SocialFeedsViewController.swift */; };
 		641FFEB42080C57800EBFBB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 641FFEB22080C57800EBFBB1 /* Main.storyboard */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		6408FDB6208511A00016C227 /* TwitterFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterFeed.swift; sourceTree = "<group>"; };
 		6408FDB8208512130016C227 /* GooglePlusFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlusFeed.swift; sourceTree = "<group>"; };
-		6408FDBC208600740016C227 /* GoogleSignInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInTableViewCell.swift; sourceTree = "<group>"; };
+		6408FDC420872A150016C227 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		641FFEAB2080C57800EBFBB1 /* SheddTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SheddTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		641FFEAE2080C57800EBFBB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		641FFEB02080C57800EBFBB1 /* SocialFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialFeedsViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 				643EE7842083577B00FE9887 /* SocialFeed.swift */,
 				6408FDB6208511A00016C227 /* TwitterFeed.swift */,
 				6408FDB8208512130016C227 /* GooglePlusFeed.swift */,
+				6408FDC420872A150016C227 /* Author.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,7 +147,6 @@
 				643EE780208352A400FE9887 /* SocialFeedTableViewCell.swift */,
 				643EE7822083533D00FE9887 /* SocialFeedsTableView.swift */,
 				643EE7992083C33A00FE9887 /* RoundedView.swift */,
-				6408FDBC208600740016C227 /* GoogleSignInTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,9 +285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6408FDC520872A150016C227 /* Author.swift in Sources */,
 				643EE79D2083C44400FE9887 /* DetailViewController.swift in Sources */,
 				643EE7882083596000FE9887 /* APIManager.swift in Sources */,
-				6408FDBD208600740016C227 /* GoogleSignInTableViewCell.swift in Sources */,
 				643EE7832083533D00FE9887 /* SocialFeedsTableView.swift in Sources */,
 				643EE7B32084B2D800FE9887 /* DBManager.swift in Sources */,
 				641FFEB12080C57800EBFBB1 /* SocialFeedsViewController.swift in Sources */,

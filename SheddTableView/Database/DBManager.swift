@@ -67,7 +67,8 @@ class DBManager {
         
         /// Make sure we have the managed context
         guard let managedContext = managedObjectContext,
-            let twitterFeedEntity = NSEntityDescription.entity(forEntityName: DBEntity.twitter.rawValue, in: managedContext) else {
+            let twitterFeedEntity = NSEntityDescription.entity(forEntityName: DBEntity.twitterFeed.rawValue, in: managedContext),
+        let twitterAuthorEntity = NSEntityDescription.entity(forEntityName: DBEntity.twitterAuthor.rawValue, in: managedContext) else {
                 return
         }
         
@@ -76,7 +77,7 @@ class DBManager {
         
         let twitterFeedMO: NSManagedObject
         
-        if let existingObject = fetch(forEntity: .twitter, predicate: predicate)?.first {
+        if let existingObject = fetch(forEntity: .twitterFeed, predicate: predicate)?.first {
             /// We have already this object store, update it
             twitterFeedMO = existingObject
         } else {
@@ -86,12 +87,27 @@ class DBManager {
         
         /// Setup managed object
         twitterFeedMO.setValue(twitterFeed.feedID, forKey: TwitterFeedDBKey.tweetID.rawValue)
-        twitterFeedMO.setValue(twitterFeed.author, forKey: TwitterFeedDBKey.author.rawValue)
-        twitterFeedMO.setValue(twitterFeed.imageURL, forKey: TwitterFeedDBKey.imageURL.rawValue)
-        twitterFeedMO.setValue(twitterFeed.tweetDescription, forKey: TwitterFeedDBKey.tweetDescription.rawValue)
-        twitterFeedMO.setValue(twitterFeed.tagUsername, forKey: TwitterFeedDBKey.tagUsername.rawValue)
+        twitterFeedMO.setValue(twitterFeed.contentText, forKey: TwitterFeedDBKey.contentText.rawValue)
         
-        /// Save managed object
+        /// Setup author for relationship
+        let authorPredicate = NSPredicate(format: "\(TwitterAuthorDBKey.authorID.rawValue) == %@", twitterFeed.author.id)
+        let twitterAuthorMO: NSManagedObject
+        
+        if let existingAuthor = fetch(forEntity: .twitterAuthor, predicate: authorPredicate)?.first {
+            twitterAuthorMO = existingAuthor
+        } else {
+           twitterAuthorMO = NSManagedObject(entity: twitterAuthorEntity, insertInto: managedContext)
+        }
+        
+        twitterAuthorMO.setValue(twitterFeed.author.id, forKey: TwitterAuthorDBKey.authorID.rawValue)
+        twitterAuthorMO.setValue(twitterFeed.author.imageURL, forKey: TwitterAuthorDBKey.imageURL.rawValue)
+        twitterAuthorMO.setValue(twitterFeed.author.name, forKey: TwitterAuthorDBKey.name.rawValue)
+        twitterAuthorMO.setValue(twitterFeed.author.tagUserName, forKey: TwitterAuthorDBKey.tagUserName.rawValue)
+        
+        /// Set relationship
+        twitterFeedMO.setValue(twitterAuthorMO, forKey: TwitterFeedDBKey.author.rawValue)
+        
+        /// Save managed objects
         do {
             try managedContext.save()
         } catch {
@@ -105,7 +121,7 @@ class DBManager {
      */
     func fetchTwitterFeeds() -> [TwitterFeed]? {
         
-        guard let twitterFetchResults = fetch(forEntity: .twitter) else {
+        guard let twitterFetchResults = fetch(forEntity: .twitterFeed) else {
             return nil
         }
         var twitterFeeds = [TwitterFeed]()
@@ -118,5 +134,81 @@ class DBManager {
         return twitterFeeds
     }
     
+    //MARK: Google Plus
     
+    /**
+     Saves a twitter feed object to CoreData.
+     - parameter twitterFeed: The TwitterFeed object to save.
+     */
+    func saveGooglePlusFeed(with googlePlusFeed: GooglePlusFeed) {
+        
+        /// Make sure we have the managed context
+        guard let managedContext = managedObjectContext,
+            let googlePlusFeedEntity = NSEntityDescription.entity(forEntityName: DBEntity.googlePlusFeed.rawValue, in: managedContext),
+            let googlePlusAuthorEntity = NSEntityDescription.entity(forEntityName: DBEntity.googlePlusAuthor.rawValue, in: managedContext) else {
+                return
+        }
+        
+        /// Check if object already exists
+        let predicate = NSPredicate(format: "\(GooglePlusFeedDBKey.feedID.rawValue) == %@", googlePlusFeed.feedID)
+        
+        let googlePlusFeedMO: NSManagedObject
+        
+        if let existingObject = fetch(forEntity: .googlePlusFeed, predicate: predicate)?.first {
+            /// We have already this object store, update it
+            googlePlusFeedMO = existingObject
+        } else {
+            /// Create managed object
+            googlePlusFeedMO = NSManagedObject(entity: googlePlusFeedEntity, insertInto: managedContext)
+        }
+        
+        /// Setup managed object
+        googlePlusFeedMO.setValue(googlePlusFeed.feedID, forKey: GooglePlusFeedDBKey.feedID.rawValue)
+        googlePlusFeedMO.setValue(googlePlusFeed.contentText, forKey: GooglePlusFeedDBKey.contentText.rawValue)
+        googlePlusFeedMO.setValue(googlePlusFeed.feedTitle, forKey: GooglePlusFeedDBKey.title.rawValue)
+        googlePlusFeedMO.setValue(googlePlusFeed.attachmentImageURL, forKey: GooglePlusFeedDBKey.attachmentImageURL.rawValue)
+        
+        /// Setup author for relationship
+        let authorPredicate = NSPredicate(format: "\(GooglePlusAuthorDBKey.authorID.rawValue) == %@", googlePlusFeed.author.id)
+        let googlePlusAuthorMO: NSManagedObject
+        
+        if let existingAuthor = fetch(forEntity: .googlePlusAuthor, predicate: authorPredicate)?.first {
+            googlePlusAuthorMO = existingAuthor
+        } else {
+            googlePlusAuthorMO = NSManagedObject(entity: googlePlusAuthorEntity, insertInto: managedContext)
+        }
+        
+        googlePlusAuthorMO.setValue(googlePlusFeed.author.id, forKey: GooglePlusAuthorDBKey.authorID.rawValue)
+        googlePlusAuthorMO.setValue(googlePlusFeed.author.imageURL, forKey: GooglePlusAuthorDBKey.imageURL.rawValue)
+        googlePlusAuthorMO.setValue(googlePlusFeed.author.name, forKey: GooglePlusAuthorDBKey.name.rawValue)
+        
+        /// Set relationship
+        googlePlusFeedMO.setValue(googlePlusAuthorMO, forKey: GooglePlusFeedDBKey.author.rawValue)
+        
+        /// Save managed objects
+        do {
+            try managedContext.save()
+        } catch {
+            print(error)
+        }
+    }
+    
+    /**
+     Fetches Twitter feeds from CoreData.
+     - returns: The converted list of TwitterFeed objects.
+     */
+    func fetchGooglePlusFeeds() -> [GooglePlusFeed]? {
+        
+        guard let googlePlusFetchResults = fetch(forEntity: .googlePlusFeed) else {
+            return nil
+        }
+        var googlePlusFeeds = [GooglePlusFeed]()
+        for object in googlePlusFetchResults {
+            if let googlePlusFeed = GooglePlusFeed(managedObject: object) {
+                googlePlusFeeds.append(googlePlusFeed)
+            }
+        }
+        
+        return googlePlusFeeds
+    }
 }

@@ -48,10 +48,10 @@ class SocialFeedsTableView: UITableView {
             
             if let twitterFeed = $0 as? TwitterFeed {
                 
-                return twitterFeed.author.lowercased().contains(keyword) || twitterFeed.feedID.contains(keyword) || twitterFeed.tweetDescription.lowercased().contains(keyword) || twitterFeed.tagUsername.lowercased().contains(keyword)
+                return twitterFeed.author.name.lowercased().contains(keyword) || twitterFeed.feedID.contains(keyword) || twitterFeed.contentText.lowercased().contains(keyword) || twitterFeed.author.tagUserName.lowercased().contains(keyword)
             } else if let googleFeed = $0 as? GooglePlusFeed {
                 
-                return googleFeed.author.lowercased().contains(keyword) || googleFeed.feedID.contains(keyword)
+                return googleFeed.author.name.lowercased().contains(keyword) || googleFeed.feedTitle.contains(keyword) ||  googleFeed.feedID.contains(keyword) || googleFeed.contentText.contains(keyword)
             }
             
             return false
@@ -131,12 +131,19 @@ extension SocialFeedsTableView: UITableViewDelegate {
 
         deselectRow(at: indexPath, animated: true)
         
-        guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailViewController.storyboardIdentifier) as? DetailViewController,
-            let feed = data?[indexPath.row] as? TwitterFeed else {
+        
+        
+        guard let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: DetailViewController.storyboardIdentifier) as? DetailViewController else {
             return
         }
 
-        detailsVC.configure(with: feed)
+        let row = indexPath.section == 1 ? indexPath.row + (numberOfRows(inSection: 0) - 1) : indexPath.row
+        if let twitterFeed = data?[row] as? TwitterFeed {
+            detailsVC.configure(with: twitterFeed)
+        } else if let googlePlusFeed = data?[row] as? GooglePlusFeed {
+            detailsVC.configure(with: googlePlusFeed)
+        }
+        
         UIApplication.topViewController()?.present(detailsVC, animated: true, completion: nil)
     }
 }
